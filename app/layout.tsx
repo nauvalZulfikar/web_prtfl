@@ -10,13 +10,13 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Nauval Zulfikar — Senior Data Scientist",
+  title: "Nauval Zulfikar — Process & Analytics Automation Specialist",
   description:
-    "Senior Data Scientist with 5+ years in ML, credit risk, and NLP. MSc Business Analytics (Aston, 1:1). Available to work in the UK.",
+    "I turn manual reporting, reconciliation, and decision workflows into measurable, AI-augmented systems. 5+ years across regulated finance, government, and multi-tenant SaaS. Available for UK, EU, and remote contracts.",
   openGraph: {
-    title: "Nauval Zulfikar — Senior Data Scientist",
+    title: "Nauval Zulfikar — Process & Analytics Automation Specialist",
     description:
-      "Building ML models, credit risk systems, and NLP pipelines in regulated financial environments.",
+      "AI implementation & development for operational teams. Production work, not prototypes.",
     url: "https://nauvalzulfikar.vercel.app",
     type: "website",
   },
