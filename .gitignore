@@ -19,3 +19,4 @@ Thumbs.db
 # TS build cache
 tsconfig.tsbuildinfo
 *.tsbuildinfo
+.env.local
