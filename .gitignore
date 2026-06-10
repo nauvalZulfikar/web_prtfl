@@ -20,3 +20,4 @@ Thumbs.db
 tsconfig.tsbuildinfo
 *.tsbuildinfo
 .env.local
+graphify-out/
