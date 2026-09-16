@@ -925,14 +925,14 @@ export const education = [
   },
   {
     school: "Ritsumeikan Asia Pacific University",
-    degree: "BBA Innovation & Economics",
+    degree: "BBA International Management (Marketing Program)",
     grade: null,
     location: "Beppu, Japan",
-    period: "2016 – 2019",
+    period: "2016 – 2021",
     notes: [
       "APU 50% Tuition Reduction Scholarship",
       "JASSO Scholarship",
-      "Distinctions: Business Data Analysis, Consumer Behaviour, Marketing Research",
+      "Grade A in Business Data Analysis and in the Undergraduate Thesis",
     ],
   },
 ];
