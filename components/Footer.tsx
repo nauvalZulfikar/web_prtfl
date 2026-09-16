@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { profile } from "@/lib/data";
 
 export default function Footer() {
@@ -11,6 +12,12 @@ export default function Footer() {
           {profile.email}
         </a>
         <div className="flex items-center gap-5">
+          <Link
+            href="/harga"
+            className="text-sm text-muted hover:text-accent transition-colors duration-150"
+          >
+            Harga (ID)
+          </Link>
           <a
             href={profile.linkedin}
             target="_blank"
@@ -26,6 +33,14 @@ export default function Footer() {
             className="text-sm text-muted hover:text-accent transition-colors duration-150"
           >
             GitHub
+          </a>
+          <a
+            href={profile.orcid}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-muted hover:text-accent transition-colors duration-150"
+          >
+            ORCID
           </a>
         </div>
       </div>

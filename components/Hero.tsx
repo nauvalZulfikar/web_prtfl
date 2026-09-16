@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { profile } from "@/lib/data";
+import { profile, booking } from "@/lib/data";
 
 export default function Hero() {
   return (
@@ -51,20 +51,23 @@ export default function Hero() {
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href="#services"
+          <div className="flex flex-wrap items-center gap-3">
+            <a
+              href={booking.url}
               className="inline-block bg-ink text-background text-sm font-medium px-6 py-2.5 rounded hover:bg-accent transition-colors duration-200"
             >
-              How I work with clients
-            </Link>
+              Book the 5-day Automation Audit
+            </a>
             <Link
-              href="#contact"
+              href="#services"
               className="inline-block border border-border text-ink text-sm font-medium px-6 py-2.5 rounded hover:border-ink transition-colors duration-200"
             >
-              Start a conversation
+              See how I work
             </Link>
           </div>
+          <p className="text-xs text-muted mt-4">
+            £950 / Rp 15jt fixed fee · credited in full against a build engagement
+          </p>
         </motion.div>
       </div>
     </section>

@@ -7,9 +7,22 @@ export const profile = {
   email: "zulfikar.nauval1998@gmail.com",
   linkedin: "https://linkedin.com/in/nauval-zulfikar/",
   github: "https://github.com/NauvalZulfikar",
+  orcid: "https://orcid.org/0009-0000-3819-0274",
   greeting: "Hi, I'm Nauval.",
   summary:
-    "Two practices share one toolchain. In industry I find workflows where a smart person spends half their week copy-pasting between systems and replace the manual parts with software that runs on its own — across a licensed bank, a regional government, and UK start-ups. In research I build Digital Twin prototypes for behaviourally-responsive urban logistics, combining agent-based modelling, discrete-event simulation, MILP optimisation, and LLM-generated adaptive decision rules. MSc Business Analytics (Aston, 1:1 First Class) and prospective PhD candidate at Aston Business School.",
+    "Two practices share one toolchain. In industry I find workflows where a smart person spends half their week copy-pasting between systems and replace the manual parts with software that runs on its own — across a licensed bank, a regional government, and UK start-ups. In research I build Digital Twin prototypes for behaviourally-responsive urban logistics, combining agent-based modelling, discrete-event simulation, MILP optimisation, and LLM-generated adaptive decision rules. MSc Business Analytics (Aston, Distinction) and prospective PhD candidate at Aston Business School.",
+};
+
+export const booking = {
+  /**
+   * Set NEXT_PUBLIC_BOOKING_URL to the Cal.com link (e.g. https://cal.com/nauval/audit).
+   * Falls back to a pre-filled email so the CTA is never a dead link.
+   */
+  url:
+    process.env.NEXT_PUBLIC_BOOKING_URL ||
+    "mailto:zulfikar.nauval1998@gmail.com?subject=Automation%20Audit%20%E2%80%94%20booking%20request&body=Company%3A%0AWhat%20the%20manual%20workflow%20is%3A%0ARoughly%20how%20many%20people%20touch%20it%3A%0APreferred%20start%20week%3A",
+  label: "Book the audit",
+  note: "20-minute fit call first if you'd rather talk before booking.",
 };
 
 export const trustStrip = {
@@ -432,55 +445,11 @@ export const projects: Project[] = [
     outcome: [
       "Live in production for the pilot kitchen (SPPG Paseh)",
       "Variance reporting replaces manual reconciliation between planned menus and actual deliveries",
-      "Foundation for the GiziGuard on-site AI nutrition layer (next project)",
     ],
     highlights: [
       "Each kitchen's data stays isolated, verified by 96 automated tests",
       "Full ownership: I built the backend, frontend, deployment, and ongoing operations",
       "Updates ship without taking the system offline",
-    ],
-  },
-  {
-    slug: "giziguard",
-    title: "GiziGuard — On-Site AI Nutrition Assistant",
-    subtitle:
-      "An AI assistant for school kitchens that runs entirely on-site — no internet needed, no data leaves the building. Trained on Indonesia's official food composition database to validate nutrition automatically. Submitted to the Kaggle Gemma 4 Good Hackathon.",
-    year: "2026",
-    tier: 1,
-    status: "in-progress",
-    role: "Solo builder",
-    tags: ["Custom AI Model", "Computer Vision", "On-Site AI", "Government"],
-    stack: [
-      "Gemma 4",
-      "Unsloth",
-      "Ollama",
-      "Python",
-      "Hik-Connect CCTV",
-      "RAG",
-      "TKPI Dataset",
-      "FastAPI",
-    ],
-    links: {
-      github: "https://github.com/NauvalZulfikar/dapurPintarMBG",
-      kaggle: "https://www.kaggle.com/competitions/gemma-4-good-hackathon",
-    },
-    problem:
-      "Kitchens under the school nutrition programme need real-time nutrition validation, but schools have unreliable internet and strict expectations that data stays on-premises. Cloud-hosted AI is neither reliable nor appropriate here.",
-    approach: [
-      "Trained a custom AI model on Indonesian and Sundanese cooking and nutrition data, matching the pilot kitchen's language mix",
-      "Grounded the AI's answers in Indonesia's official food composition database, so it cites real numbers instead of guessing",
-      "CCTV activity recognition tracks kitchen events — receiving, prep, plating, distribution — using the existing camera system",
-      "Runs entirely on a small computer at the kitchen — no internet connection needed, no data leaves the premises",
-      "Plugs into the DPMBG system as a separate nutrition-analysis service",
-    ],
-    outcome: [
-      "Submission targeted for the Kaggle Gemma 4 Good Hackathon (deadline 2026-05-18)",
-      "Reusable on-site AI layer applicable to other government nutrition programmes",
-    ],
-    highlights: [
-      "Runs offline — no data ever leaves school premises",
-      "Understands both Bahasa Indonesia and Sundanese",
-      "Combines camera vision and language AI on affordable hardware",
     ],
   },
   {
@@ -944,7 +913,7 @@ export const education = [
   {
     school: "Aston University",
     degree: "MSc Business Analytics",
-    grade: "1:1 First Class",
+    grade: "Distinction",
     location: "Birmingham, UK",
     period: "2023 – 2024",
     notes: [
@@ -977,9 +946,29 @@ export type Service = {
   summary: string;
   deliverables: string[];
   bestFor: string;
+  /** Rendered as the wide entry-offer card above the grid. Exactly one service should set this. */
+  featured?: boolean;
 };
 
 export const services: Service[] = [
+  {
+    slug: "audit",
+    name: "Automation Audit",
+    duration: "5 working days",
+    structure: "Fixed fee · book online",
+    priceFrom: { gbp: "£950", idr: "Rp 15jt" },
+    featured: true,
+    summary:
+      "Five days, one department, one deliverable: every manual workflow mapped and ranked by what automating it gives back — in your hours and your currency, not a generic maturity model. If you go ahead with a Build engagement afterwards, the full fee comes off the price.",
+    deliverables: [
+      "Workflow map of one department — every manual step, timed",
+      "Payback ranking: hours and money saved per workflow",
+      "The one workflow I’d automate first, and the reason",
+      "90-day sequencing plan you can hand to any developer — me or not",
+    ],
+    bestFor:
+      "Anyone who suspects there’s waste but wants proof before committing budget. Also the cheapest way to find out whether we work well together.",
+  },
   {
     slug: "diagnostic",
     name: "Diagnostic Sprint",
@@ -1055,3 +1044,111 @@ export const testimonials: Testimonial[] = [
   //   published: true,
   // },
 ];
+
+/* ── Halaman harga untuk klien Indonesia (/harga) ──────────────────────────
+   Angka rupiah sengaja sama persis dengan `services` di atas — klien bisa
+   membandingkan kedua halaman tanpa menemukan harga yang berbeda. */
+
+export type PaketId = {
+  slug: string;
+  nama: string;
+  durasi: string;
+  harga: string;
+  ringkas: string;
+  isi: string[];
+  cocokUntuk: string;
+  utama?: boolean;
+};
+
+export const hargaId = {
+  judul: "Harga untuk klien Indonesia",
+  intro:
+    "Saya membangun sistem yang menggantikan kerja manual — pemerintah daerah, bank, dan operasi multi-cabang. Semua paket di bawah ini harga tetap, bukan per jam, jadi tidak ada tagihan yang membengkak di tengah jalan. Ruang lingkup dan tanggal keluar di awal.",
+  catatanPajak:
+    "Harga belum termasuk PPN. Bisa via kontrak, SPK, atau PO — dokumen pengadaan saya siapkan.",
+  paket: [
+    {
+      slug: "audit",
+      nama: "Audit Otomasi",
+      durasi: "5 hari kerja",
+      harga: "Rp 15 juta",
+      utama: true,
+      ringkas:
+        "Lima hari, satu divisi. Saya petakan setiap pekerjaan manual yang masih dikerjakan tangan, lalu saya urutkan mana yang paling cepat balik modal kalau diotomasi — dihitung pakai angka Anda sendiri, bukan template. Kalau lanjut ke paket Bangun Sistem, biaya audit ini dipotong penuh dari harganya.",
+      isi: [
+        "Peta alur kerja satu divisi — tiap langkah manual, lengkap dengan waktunya",
+        "Peringkat balik modal: berapa jam dan berapa rupiah yang kembali per alur",
+        "Satu alur yang saya sarankan dikerjakan duluan, beserta alasannya",
+        "Rencana 90 hari yang bisa dikerjakan siapa saja — saya atau tim Anda",
+      ],
+      cocokUntuk:
+        "Anda merasa ada pemborosan tapi butuh bukti sebelum mengeluarkan anggaran. Sekaligus cara paling murah untuk tahu kita cocok kerja bareng atau tidak.",
+    },
+    {
+      slug: "diagnostic",
+      nama: "Sprint Diagnostik",
+      durasi: "1–2 minggu",
+      harga: "Rp 32 juta",
+      ringkas:
+        "Versi lebih dalam dari audit: saya masuk ke beberapa divisi sekaligus, wawancara pengguna, dan keluar dengan peta jalan yang bisa langsung dibawa ke rapat anggaran.",
+      isi: [
+        "Semua alur manual yang layak diotomasi, diurutkan dari yang paling cepat balik modal",
+        "Hitungan jam dan biaya yang dihemat, pakai angka internal Anda",
+        "Peta jalan bahasa awam yang bisa ditandatangani pimpinan",
+        "Proyeksi 90 hari supaya jelas kapan investasinya kembali",
+      ],
+      cocokUntuk:
+        "Kepala bagian operasional yang curiga 30%+ waktu timnya habis untuk salin-tempel, tapi belum punya bukti angkanya.",
+    },
+    {
+      slug: "build",
+      nama: "Bangun Sistem",
+      durasi: "4–12 minggu",
+      harga: "Rp 120 juta",
+      ringkas:
+        "Saya bangun sistemnya sampai jalan, lalu saya serahkan ke tim Anda. Pekerjaan manualnya diambil alih software, orang Anda kembali mengerjakan bagian yang butuh pertimbangan manusia.",
+      isi: [
+        "Software yang mengerjakan pekerjaan manual itu, sudah dipasang dan jalan",
+        "Fitur AI hanya di tempat yang benar-benar menghemat waktu — bukan karena sedang tren",
+        "Pemantauan otomatis, jadi Anda tahu sistemnya sehat tanpa harus mengecek",
+        "Pelatihan tim internal supaya Anda tidak terkunci ke satu vendor",
+      ],
+      cocokUntuk:
+        "Tim yang sudah tahu apa yang mau diotomasi dan punya tenggat — dinas, bank, jaringan retail, operasi multi-lokasi.",
+    },
+    {
+      slug: "run",
+      nama: "Rawat & Kembangkan",
+      durasi: "Retainer bulanan",
+      harga: "Rp 16 juta / bulan",
+      ringkas:
+        "Sistemnya saya jaga tetap jalan, saya perbaiki kalau rusak, dan saya tambah otomasi baru seiring proses Anda berubah. Seperti punya engineer senior on-call tanpa menggaji penuh.",
+      isi: [
+        "Ada yang bisa dihubungi saat sistem bermasalah",
+        "Pemeriksaan triwulanan supaya sistem tetap akurat saat data Anda berubah",
+        "Antrian perbaikan kecil supaya sistemnya terus memberi hasil",
+        "Tinjauan peta jalan bersama pemangku kepentingan, pakai bahasa mereka",
+      ],
+      cocokUntuk:
+        "Tim yang sudah punya sistem otomasi dan tidak mau sistemnya membusuk saat pembuat aslinya pergi.",
+    },
+  ] as PaketId[],
+  faq: [
+    {
+      t: "Kenapa harga tetap, bukan per jam?",
+      d: "Per jam membuat saya untung kalau pekerjaan molor. Harga tetap membuat kita berdua ingin cepat selesai. Ruang lingkupnya saya kunci di awal; kalau Anda menambah permintaan di tengah jalan, kita sepakati harga tambahan terpisah — tidak ada tagihan kejutan.",
+    },
+    {
+      t: "Kalau setelah audit ternyata tidak ada yang layak diotomasi?",
+      d: "Saya bilang apa adanya, dan Anda hemat ratusan juta yang hampir keluar. Itu tetap hasil yang berguna. Sejauh ini belum pernah terjadi, tapi kemungkinannya nyata.",
+    },
+    {
+      t: "Bisa kerja dengan proses pengadaan pemerintah?",
+      d: "Bisa. Saya sudah lima tahun di lingkungan Dinas PUTR Kabupaten Bandung dan bank berlisensi — SPK, PO, berita acara, dokumen serah terima, semuanya biasa saya siapkan.",
+    },
+    {
+      t: "Datanya aman?",
+      d: "Latar belakang saya perbankan berlisensi, di mana setiap model harus lolos audit. Sistem bisa dipasang di server Anda sendiri kalau data tidak boleh keluar. Untuk DPMBG, data tiap dapur terpisah dan itu diverifikasi 96 tes otomatis.",
+    },
+  ],
+};
