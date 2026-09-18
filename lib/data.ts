@@ -10,7 +10,7 @@ export const profile = {
   orcid: "https://orcid.org/0009-0000-3819-0274",
   greeting: "Hi, I'm Nauval.",
   summary:
-    "Two practices share one toolchain. In industry I find workflows where a smart person spends half their week copy-pasting between systems and replace the manual parts with software that runs on its own — across a licensed bank, a regional government, and UK start-ups. In research I build Digital Twin prototypes for behaviourally-responsive urban logistics, combining agent-based modelling, discrete-event simulation, MILP optimisation, and LLM-generated adaptive decision rules. MSc Business Analytics (Aston, Distinction) and prospective PhD candidate at Aston Business School.",
+    "Two practices share one toolchain. In industry I find workflows where a smart person spends half their week copy-pasting between systems and replace the manual parts with software that runs on its own — across a licensed bank, a regional government, and UK start-ups. In research I build Digital Twin prototypes for behaviourally-responsive urban logistics, combining agent-based modelling, discrete-event simulation, MILP optimisation, and LLM-generated adaptive decision rules. MSc Business Analytics (Aston, 1:1 First Class) and prospective PhD candidate at Aston Business School.",
 };
 
 export const booking = {
@@ -913,7 +913,7 @@ export const education = [
   {
     school: "Aston University",
     degree: "MSc Business Analytics",
-    grade: "Distinction",
+    grade: "1:1 First Class",
     location: "Birmingham, UK",
     period: "2023 – 2024",
     notes: [
